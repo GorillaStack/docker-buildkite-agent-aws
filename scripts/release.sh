@@ -2,5 +2,5 @@
 
 set -euo pipefail
 
-echo "--- Pushing gorillastack/buildkite-agent-node"
-docker push "gorillastack/buildkite-agent-node"
+echo "--- Pushing gorillastack/buildkite-agent-aws"
+docker push "gorillastack/buildkite-agent-aws"

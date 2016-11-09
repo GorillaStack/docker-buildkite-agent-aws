@@ -22,21 +22,8 @@ echo ">> Buildkite version: "
 docker run --rm --entrypoint "buildkite-agent" "${DOCKER_IMAGE_NAME}" --version
 echo -e "\033[33;32mOk\033[0m"
 
-nvm_version="${NVM_VERSION:-0.32.1}"
-echo -e ">> Checking nvm version on ${DOCKER_IMAGE_NAME} matches ${nvm_version}"
-docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}" -c '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm --version' | grep --color ${nvm_version}
-echo -e "\033[33;32mOk\033[0m"
-
-echo -e ">> Checking node is installed on ${DOCKER_IMAGE_NAME}"
-docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && node --version'
-echo -e "\033[33;32mOk\033[0m"
-
-echo -e ">> Checking npm is installed on ${DOCKER_IMAGE_NAME}"
-docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && node --version'
-echo -e "\033[33;32mOk\033[0m"
-
-echo -e ">> Checking grunt is installed on ${DOCKER_IMAGE_NAME}"
-docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && grunt --version'
+echo -e ">> Checking that the AWS CLI is installed on ${DOCKER_IMAGE_NAME}"
+docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'aws --version'
 echo -e "\033[33;32mOk\033[0m"
 
 docker_version=$(docker_label $DOCKER_IMAGE_NAME "com.buildkite.docker_version")
