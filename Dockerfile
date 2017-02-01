@@ -17,8 +17,10 @@ ENV NODE_VERSION v6.2.2
 ENV NODE_PREFIX /usr/local
 
 RUN set -x \
-    && echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && echo "http://dl-4.alpinelinux.org/alpine/v3.5/main/" > /etc/apk/repositories \
+    #&& echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+    #&& echo "http://dl-4.alpinelinux.org/alpine/v3.3/testing" >> /etc/apk/repositories \
+    && echo "http://dl-4.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories \
     && apk update \
     && apk add \
         ca-certificates \
@@ -39,6 +41,7 @@ RUN set -x \
         subversion \
         sudo \
         tar \
+        zip \
 
 #############################################################################
 # Install Node & NPM
