@@ -26,8 +26,12 @@ echo -e ">> Checking that the AWS CLI is installed on ${DOCKER_IMAGE_NAME}"
 docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'aws --version'
 echo -e "\033[33;32mOk\033[0m"
 
-echo -e ">> Checking that the serverless is installed on ${DOCKER_IMAGE_NAME}"
+echo -e ">> Checking that the serverless framework is installed on ${DOCKER_IMAGE_NAME}"
 docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'serverless --version'
+echo -e "\033[33;32mOk\033[0m"
+
+echo -e ">> Checking that zip is installed on ${DOCKER_IMAGE_NAME}"
+docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'zip --version'
 echo -e "\033[33;32mOk\033[0m"
 
 echo -e ">> Checking that the sls alias for serverless is available on ${DOCKER_IMAGE_NAME}"
