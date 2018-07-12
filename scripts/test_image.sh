@@ -38,6 +38,14 @@ echo -e ">> Checking that the sls alias for serverless is available on ${DOCKER_
 docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'sls --version'
 echo -e "\033[33;32mOk\033[0m"
 
+echo -e ">> Checking that jq is installed on ${DOCKER_IMAGE_NAME}"
+docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'jq --version'
+echo -e "\033[33;32mOk\033[0m"
+
+echo -e ">> Checking that sed is installed on ${DOCKER_IMAGE_NAME}"
+docker run --rm --entrypoint "/bin/bash" "${DOCKER_IMAGE_NAME}"  -c 'sed --version'
+echo -e "\033[33;32mOk\033[0m"
+
 docker_version=$(docker_label $DOCKER_IMAGE_NAME "com.buildkite.docker_version")
 
 if [[ -n "$docker_version" ]] ; then

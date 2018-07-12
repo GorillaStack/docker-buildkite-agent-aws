@@ -7,20 +7,14 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py
 # Install AWSCLI
 RUN pip install awscli
 
-# Install serverless
-# Install npm as from here
-# https://github.com/shadiakiki1986/docker-nginx-npm/blob/master/Dockerfile
-# which is based on https://github.com/mkenney/docker-npm/blob/master/Dockerfile
-# which is based on https://github.com/mhart/alpine-node/blob/master/Dockerfile
-
 ENV NODE_VERSION 8.11.1
 ENV NODE_PREFIX /usr/local
 
 RUN set -x \
-    && echo "http://dl-4.alpinelinux.org/alpine/v3.5/main/" > /etc/apk/repositories \
+    && echo "http://dl-4.alpinelinux.org/alpine/v3.6/main/" > /etc/apk/repositories \
     #&& echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     #&& echo "http://dl-4.alpinelinux.org/alpine/v3.3/testing" >> /etc/apk/repositories \
-    && echo "http://dl-4.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories \
+    && echo "http://dl-4.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repositories \
     && apk update \
     && apk add \
         linux-headers \
@@ -30,6 +24,8 @@ RUN set -x \
         subversion \
         sudo \
         nodejs-npm \
+        zip \
+        jq \
 
 
     # Install node packages
