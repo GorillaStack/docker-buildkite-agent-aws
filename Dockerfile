@@ -26,19 +26,15 @@ RUN set -x \
         nodejs-npm \
         zip \
         jq \
-
-
     # Install node packages
     && npm install --silent -g \
+        npm@6.1.0 \
         grunt-cli \
         serverless \
-
 ##############################################################################
 # ~ fin ~
 ##############################################################################
-
     &&  apk del \
         linux-headers \
         python \
-
     && rm -rf /var/cache/apk/*
